@@ -106,7 +106,7 @@ const ProjectElements = () => {
       {arrayNames.map((arrayName) => {
         return (
           <TouchableOpacity key={arrayName} style={styles.paper} onPress={() => handlePress(arrayName)}>
-            <Text style={styles.text}>{arrayName}</Text>
+            <Text style={styles.listItems}>{arrayName}</Text>
           </TouchableOpacity>
         )
       })}

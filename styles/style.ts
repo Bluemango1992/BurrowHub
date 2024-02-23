@@ -34,12 +34,20 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     backgroundColor: colors.primary,
     padding: spacing.medium,
-    marginBottom: spacing.medium,
+    alignItems: 'center',
   },
   contents: {
     padding: spacing.medium,
+  },
+  footer: {
+    flexDirection: 'row',
+    backgroundColor: colors.primary,
+    padding: spacing.medium,
+    gap: spacing.medium,
   },
   text: {
     color: colors.text,
@@ -91,10 +99,33 @@ const styles = StyleSheet.create({
   },
   paper: {
     backgroundColor: colors.primary,
-    padding: spacing.medium,
     marginVertical: spacing.small,
   },
-
+  modalView: {
+    flex: 1,
+    marginTop: 100,
+    backgroundColor: "white",
+    padding: 35,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    shadowColor: "#000",
+    elevation: 5,
+    borderRadius: 10,
+  },
+  listItems: {
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    padding: spacing.medium,
+    borderBottomColor: colors.secondary,
+    borderBottomWidth: 1,
+  },
+  listitemTitle: {
+    fontSize: fontSizes.medium,
+    marginBottom: spacing.small,
+  },
+  listitemCaption: {
+    fontSize: fontSizes.small,
+  },
 });
 
 export default styles;

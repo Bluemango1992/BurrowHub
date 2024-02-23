@@ -1,10 +1,14 @@
-import { View, Text } from 'react-native'
+import { View, Text, Modal } from 'react-native'
 import React from 'react'
 import styles from '@/styles/style';
+import Button from '@/components/Button';
+import { useState } from 'react';
 
 const FieldReport = () => {
 
+
     const projectData = {
+      
         FieldReports: [
           {
             reportId: "report1",
@@ -63,20 +67,48 @@ const FieldReport = () => {
         ]
       };
 
-      const fieldreports = projectData.FieldReports;
-    
-  return (
-    <View style={styles.container}>
-      {fieldreports.map((fieldreport) => (
-        <View key={fieldreport.reportId} style={styles.paper}>
-        <Text key={fieldreport.reportId}>{fieldreport.reportName}</Text>
-        <Text>{fieldreport.reportId}</Text>
-        <Text>{fieldreport.projectDetails.projectId}</Text>
-        <Text>{fieldreport.projectDetails.projectName}</Text>
+      
+
+      const fieldreports = projectData?.FieldReports || [];
+
+      if (fieldreports.length === 0) {
+        return (
+          <InsertFieldReport />
+        );
+      }
+
+      return (
+        <View style={styles.container}>
+          {fieldreports.map((fieldreport) => (
+            <View style={styles.paper}>
+              <View key={fieldreport.reportId} style={styles.contents}>
+                <Text key={fieldreport.reportId}>{fieldreport.reportName}</Text>
+                <Text>{fieldreport.reportId}</Text>
+                <Text>{fieldreport.projectDetails.projectId}</Text>
+                <Text>{fieldreport.projectDetails.projectName}</Text>
+              </View>
+            </View>
+          ))}
         </View>
-      ))}
-    </View>
-  )
+      );
 }
 
+
 export default FieldReport
+
+const InsertFieldReport = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text>No field reports available.</Text>
+      <Button title="Create Field Report" onPress={openModal} />
+      {isModalOpen && <Modal visible={true} animationType="slide" />}
+    </View>
+  );
+};

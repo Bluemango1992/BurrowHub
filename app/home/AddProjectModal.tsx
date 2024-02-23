@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, Modal } from 'react-native';
 import Button from '../../components/Button';
+import styles from '../../styles/style';
 
 interface AddProjectModalProps {
     isVisible: boolean;
@@ -31,39 +32,14 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({ isVisible, onAdd, onC
                     value={projectName}
                     onChangeText={setProjectName}
                 />
-    
+                <View style={styles.footer}>
                 <Button title="Add Project" onPress={handleAdd} />
                 <Button title="Cancel" onPress={onCancel} primary={false} />
+                </View> 
             </View>
         </Modal>
     );
 };
 
-const styles = StyleSheet.create({
-    modalView: {
-        margin: 20,
-        marginTop: '50%',
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    input: {
-        width: '100%',
-        marginVertical: 10,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-    },
-});
 
 export default AddProjectModal;

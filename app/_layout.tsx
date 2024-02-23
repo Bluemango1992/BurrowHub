@@ -52,6 +52,7 @@ function RootLayoutNav() {
       <Stack.Screen name="collaborations" options={{ headerShown: true }} />
       <Stack.Screen name="contacts" options={{ headerShown: true }} />
       <Stack.Screen name="internalnotes" options={{ headerShown: true }} />
+      <Stack.Screen name="internalpictures" options={{ headerShown: true }} />
     </Stack>
   );
 }

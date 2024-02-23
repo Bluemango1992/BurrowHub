@@ -1,24 +1,45 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import styles from '@/styles/style'
+import Button from './Button'
+import ListItem from './ListItem'
+import { useState } from 'react'
+import FAB from './FAB'
 
-const ObservationCard = () => {
+interface ObservationCardProps {
+        title: string;
+        description: string;
+        picture: string;
+        location: string;
+    }
 
-    const observation = {
-        description: 'This is a description',
-        buildingPart: 'This is a building part'
+const ObservationCard: React.FC<ObservationCardProps> = ({ title , description, picture, location }) => {
+
+    const [expanded, setExpanded] = useState(false)
+
+
+    const handleExpand = () => {
+        setExpanded(!expanded)
     }
 
     return (
-        <>
+
             <View style={styles.paper}>
-                <Text>Observation</Text>
-                <Text>{observation.description}</Text>
-                <Text>{observation.buildingPart}</Text>
-            </View>
-        </>
+                <View style={styles.header}>
+                <Text style={styles.text}>{title}</Text>
+                <FAB  onPress={handleExpand} />
+                </View>
+                {expanded && (
+                <View style={styles.paper}>
+                <ListItem title="Description" caption={description} />
+                <ListItem title="Picture" caption={picture} />
+                <ListItem title="Location" caption={location} />
+                </View>
+                )}
+                
+        </View>
     )
-    }
+}
 
 export default ObservationCard
 
